@@ -1,4 +1,4 @@
-import { Admin } from  '../db'
+const { Admin } = require("../db")
 
 function adminMiddleware(req,res,next) {
     const username = req.headers.username;
@@ -7,8 +7,7 @@ function adminMiddleware(req,res,next) {
     Admin.findOne({
         username:username,
         password:password
-    })
-    .then(function(value){
+    }).then(function(value){
             if (value) {
             next()
         } else {
@@ -18,3 +17,5 @@ function adminMiddleware(req,res,next) {
         };
     });
 };
+
+module.exports = adminMiddleware;
