@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://admin:mohan123@cluster0.q91rfbe.mongodb.net/');
+mongoose.connect('mongodb+srv://admin:mohan123@cluster0.q91rfbe.mongodb.net/course-selling');
 
 const AdminSchema = new mongoose.Schema({
     username:String,
@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
     username:String,
     password:String,
     purchasedcourse:[{
-        type : mongoose.Schema.Types.ObjectId ,
+        type : mongoose.Schema.Types.ObjectId,
         ref:'Course'
     }]
 });
@@ -28,4 +28,4 @@ const Admin = mongoose.model( 'Admin', AdminSchema );
 const User = mongoose.model( 'User', UserSchema);
 const Course = mongoose.model('Course',CourseSchema);
 
-module.exports= {Admin,User,Course};
+module.exports = { Admin,User,Course };
